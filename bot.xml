@@ -18,7 +18,7 @@
 				<var name="StreetName" value='get(0, $Options)' scope='user'/>
 				<var name="IfAmbig" value='len($Options) gt 1' scope='user'/>
 				<output value="Уточните улицу:" if='$IfAmbig'/>
-				<context id="ambiguation" if="$IfAmbig" modal="true">
+				<context id="ambiguation" if="len($Options) gt 1" modal="true">
 					<input pattern="* $StreetName::Text"/>
 					<sample> 
 						<item value="get(0, $Options)"/>
