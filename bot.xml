@@ -13,10 +13,9 @@
 			</input>
 			<!-->
 			<input pattern="$Street">
-				<var name="Input" value='get("name", $Street)' scope='user'/>
 				<var name="Options" value='get("options", $Street)' scope='user'/>
-				<var name="StreetName" value='get(0, $Options)' scope='user'/>				
-				<output value="Однозначно: $StreetName" if="len($Options) lt 2"/>
+				<var name="StreetFinal" value='get(0, $Options)' scope='user'/>				
+				<output value="Однозначно: $StreetFinal" if="len($Options) lt 2"/>
 				<context id="ambiguation" if="len($Options) gt 1">
 					<output value="Уточните улицу:"/>
 					<var name="Options0" value='javascript: $Options[0]' scope='context'/>
@@ -29,8 +28,10 @@
 						<item value="$Options2"/>
 						<item value="$Options3"/>
 					</sample>
-					<input pattern="* $StreetName::Text">
-						<output value="Неоднозначность: $StreetName"/>
+					<input pattern="$Street">
+						<var name="Options" value='get("options", $Street)' scope='user'/>
+						<var name="StreetFinal" value='get(0, $Options)' scope='user'/>	
+						<output value="Неоднозначность разрешена: $Street"/>
 						<context id="get_order"/>
 					</input>
 				</context>
