@@ -1,3 +1,3 @@
 function len(options) {
-  return options.length;
+  return options.length > 1;
 }
