@@ -7,7 +7,7 @@
 			<pattern name="FromAddress" value="$Street [,] $House"/>
 			<pattern name="ToAddress" value="$Street [,] $House"/>
 			<input>
-				<pattern value="* (заказ*|такси|машин*) * [(от|к) $FromAddress] * [(к|до) $ToAddress] * [$Date] * [$Time]"/>
+				<pattern value="*(заказ*|такси|машин*)*[(от|к) $FromAddress]*[(к|до) $ToAddress]*[$Date]*[$Time]"/>
 			</input>
 			<output value="От: $FromAddress, До: $ToAddress, Дата: $Date, $Time"/>
 			<context id="get_order"/>
