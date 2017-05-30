@@ -18,12 +18,16 @@
 				<var name="StreetName" value='get(0, $Options)' scope='user'/>	
 				<context id="ambiguation" if="len($Options) gt 1" modal="true">
 					<output value="Уточните улицу:"/>
+					<var name="Options0" value='javascript: $Options[0]' scope='context'/>
+					<var name="Options1" value='javascript: $Options[1]' scope='context'/>
+					<var name="Options2" value='javascript: $Options[2]' scope='context'/>
+					<var name="Options3" value='javascript: $Options[3]' scope='context'/>
 					<input pattern="* $StreetName::Text"/>
 					<sample> 
-						<item value="javascript: myget(Street, 0)"/>
-						<item value="javascript: myget(Street, 1)"/>
-						<item value="javascript: myget(Street, 2)" if='len($Options) gt 2'/>
-						<item value="javascript: myget(Street, 3)" if='len($Options) gt 3'/>
+						<item value="$Options0"/>
+						<item value="$Options1"/>
+						<item value="$Options2" if='len($Options) gt 2'/>
+						<item value="$Options3" if='len($Options) gt 3'/>
 					</sample>
 				</context>
 				<output value="Вычислил: $StreetName"/>
