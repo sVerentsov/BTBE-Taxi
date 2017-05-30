@@ -17,7 +17,7 @@
 				<var name="Options" value='get("options", $Street)' scope='user'/>
 				<var name="StreetName" value='get(0, $Options)' scope='user'/>
 				<var name="Debug" value='eq(get(1, $Options), "null")' scope='user'/>
-				<output value="Уточните улицу:" if='!eq(get(1, $Options), "null")'/>
+				<output value="Уточните улицу: eq(get(1, $Options)" if='!eq(get(1, $Options), "null")'/>
 				<context id="ambiguation" if="full(get(1, $Options)) modal=true">
 					<input pattern="* $StreetName::Text"/>
 					<sample> 
