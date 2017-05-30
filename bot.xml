@@ -26,8 +26,8 @@
 					<sample> 
 						<item value="$Options0">
 						<item value="$Options1"/>
-						<item value="$Options2"if='len($Options) gt 2'/>
-						<item value="$Options3"if='len($Options) gt 3'/>
+						<item value="$Options2" if='len($Options) gt 2'/>
+						<item value="$Options3" if='len($Options) gt 3'/>
 					</sample>
 				</context>
 				<output value="Вычислил: $StreetName"/>
