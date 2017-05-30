@@ -1,4 +1,14 @@
 <context>
 	<input pattern="/start"/>
 	<output value="Это бот для заказа такси"/>
+	<context id="get_order">
+		<pattern name="House", value="($Number|$Number//$Number|$Number[а-я]|$Numberк$Number)">
+		<pattern name="Street", value="$Text">
+		<pattern name="FromAddress", value="$Street(,| )$House">
+		<pattern name="ToAddress", value="$Street(,| )$House">
+		<input>
+			<pattern="* (заказ|такси|машин)*[(от|к) $FromAddress] *[(к|до) $ToAddress] *[$Date] *[$Time]"\>
+		</input>
+		<output value="От: $FromAddress, До: $ToAddress, Дата: $Date, $Time"/>
+	</context>
 </context>
