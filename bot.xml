@@ -24,15 +24,17 @@
 					<var name="Options2" value='javascript: $Options[2]' scope='context'/>
 					<var name="Options3" value='javascript: $Options[3]' scope='context'/>
 					<input pattern="* $StreetName::Text">
-						<sample> 
-							<item value="$Options0"/>
-							<item value="$Options1"/>
-							<item value="$Options2" if='len($Options) gt 2'/>
-							<item value="$Options3" if='len($Options) gt 3'/>
-						</sample>
 						<output value="Вычислил: $StreetName"/>
 						<context id="get_order"/>
 					</input>
+					<sample if='len($Options) lt 3'> 
+							<item value="$Options0"/>
+							<item value="$Options1"/>
+							<!-->
+							<item value="$Options2" if='len($Options) gt 2'/>
+							<item value="$Options3" if='len($Options) gt 3'/>
+							<!-->
+					</sample>
 				</context>
 				<!-->
 				<context id="order_formed">
