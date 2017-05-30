@@ -1,3 +1,4 @@
 <context>
+	<input value="/start"/>
 	<output value="Это бот для заказа такси"/>
 </context>
