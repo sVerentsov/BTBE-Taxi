@@ -32,6 +32,7 @@
 						<output value="Вычислил: $StreetName"/>
 						<context id="get_order"/>
 					</input>
+					<output value="Однозначно: $StreetName"/>
 				</context>
 				<!-->
 				<context id="order_formed">
