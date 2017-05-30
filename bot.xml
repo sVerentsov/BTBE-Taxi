@@ -4,8 +4,8 @@
 	<context id="get_order">
 		<pattern name="House" value="( $Number | $Number // $Number | $Number[а-я] | $Number к $Number )"/>
 		<pattern name="Street" value="$Text"/>
-		<pattern name="FromAddress" value="$Street{( , |   )}$House"/>
-		<pattern name="ToAddress" value="$Street{( , |  )}$House"/>
+		<pattern name="FromAddress" value="$Street [,] $House"/>
+		<pattern name="ToAddress" value="$Street [,] $House"/>
 		<input>
 			<pattern value="* (заказ*|такси|машин*) * [ (от|к) $FromAddress] * [ (к|до) $ToAddress] * [$Date] * [$Time]"/>
 		<output value="От: $FromAddress, До: $ToAddress, Дата: $Date, $Time"/>
