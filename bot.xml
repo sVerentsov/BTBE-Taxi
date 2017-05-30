@@ -24,7 +24,7 @@
 					<var name="Options2" value='javascript: $Street[2]' scope='context'/>
 					<var name="Options3" value='javascript: $Street[3]' scope='context'/>
 					<sample> 
-						<item value="$Options0">
+						<item value="$Options0"/>
 						<item value="$Options1"/>
 						<item value="$Options2" if='len($Options) gt 2'/>
 						<item value="$Options3" if='len($Options) gt 3'/>
