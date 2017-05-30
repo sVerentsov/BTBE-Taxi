@@ -29,7 +29,6 @@
 						<item value="$Options2" if='len($Options) gt 2'/>
 						<item value="$Options3" if='len($Options) gt 3'/>
 					</sample>
-					<context/>
 				</context>
 			</input>
 		</context>
