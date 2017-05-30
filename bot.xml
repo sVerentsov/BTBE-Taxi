@@ -22,7 +22,7 @@
 					<var name="Options1" value='javascript: $Options[1]' scope='context'/>
 					<var name="Options2" value='javascript: $Options[2]' scope='context'/>
 					<var name="Options3" value='javascript: $Options[3]' scope='context'/>
-					<input pattern="* $StreetName::Text>
+					<input pattern="* $StreetName::Text">
 						<sample> 
 							<item value="$Options0"/>
 							<item value="$Options1"/>
