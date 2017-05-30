@@ -15,6 +15,7 @@
 			<input pattern="$Street">
 				<var name="Input" value='get("name", $Street)'/>
 				<var name="Options" value='get("options", $Street)'/>
+				<var name="StreetName" value='get(0, $Options)'/>
 				<context id="ambiguation" if="full(get(1, $Options)) modal=true">
 					<output value="Уточните улицу:"/>
 					<input pattern="* $StreetName::Text"/>
@@ -24,7 +25,7 @@
 						<item value="get(2, $Options)"/>
 						<item value="get(3, $Options)"/>
 					</sample>
-					<output value="Вычислил: "/>
+					<output value="Вычислил: $StreetName"/>
 				</context>
 			</input>
 		</context>
