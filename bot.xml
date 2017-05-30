@@ -29,20 +29,17 @@
 							<item value="$Options2" if='len($Options) gt 2'/>
 							<item value="$Options3" if='len($Options) gt 3'/>
 						</sample>
-						<context id="order_formed"/>
+						<context id="get_order"/>
 					</input>
 				</context>
+				<!-->
 				<context id="order_formed">
 					<output value="Вычислил: $StreetName"/>
 					<context id="get_order"/>
 				</context>
+				<!-->
 			</input>
 		</context>
-		<!-->
-		<context id="order_formed">
-			<output value="Вычислил: $StreetName"/>
-			<context id="get_order"/>
-		</context>
-		<!-->
+
 	</input>
 </context>	
