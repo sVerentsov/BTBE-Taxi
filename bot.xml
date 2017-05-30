@@ -16,6 +16,7 @@
 				<var name="Input" value='get("name", $Street)' scope='user'/>
 				<var name="Options" value='get("options", $Street)' scope='user'/>
 				<var name="StreetName" value='get(0, $Options)' scope='user'/>	
+				<output value="Однозначно: $StreetName" if="len($Options) lt 2"/>
 				<context id="ambiguation" if="len($Options) gt 1">
 					<output value="Уточните улицу:"/>
 					<var name="Options0" value='javascript: $Options[0]' scope='context'/>
@@ -32,7 +33,6 @@
 						<output value="Вычислил: $StreetName"/>
 						<context id="get_order"/>
 					</input>
-					<output value="Однозначно: $StreetName"/>
 				</context>
 				<!-->
 				<context id="order_formed">
