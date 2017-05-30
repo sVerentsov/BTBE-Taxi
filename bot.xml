@@ -1,39 +1,38 @@
 <context>
 	<input pattern="/start">
-	<output value="Это бот для заказа такси"/>
-	<context id="get_order" modal="true">
-		<pattern name="House" value="( $Number | $Number // $Number | $Number[а-я] | $Number к $Number )"/>
-		<pattern name="Street" value="entity://streets"/>
-		<pattern name="FromAddress" value="$Street [,] $House"/>
-		<pattern name="ToAddress" value="$Street [,] $House"/>
-		<!-->
-		<input>
-			<pattern value="* (заказ*|такси|машин*) * [ (от|к) $FromAddress] * [ (к|до) $ToAddress] * [$Date] * [$Time]"/>
-		<output value="От: $FromAddress, До: $ToAddress, Дата: $Date, $Time"/>
-		</input>
-		<!-->
-		<input pattern="$Street">
-			<var name="Input" value='get("name", $Street)' scope='user'/>
-			<var name="Options" value='get("options", $Street)' scope='user'/>
-			<var name="StreetName" value='get(0, $Options)' scope='user'/>	
-			<context id="ambiguation" if="len($Options) gt 1">
-				<output value="Уточните улицу:"/>
-				<var name="Options0" value='javascript: $Options[0]' scope='context'/>
-				<var name="Options1" value='javascript: $Options[1]' scope='context'/>
-				<var name="Options2" value='javascript: $Options[2]' scope='context'/>
-				<var name="Options3" value='javascript: $Options[3]' scope='context'/>
-				<input pattern="* $StreetName::Text"/>
-				<sample> 
-					<item value="$Options0"/>
-					<item value="$Options1"/>
-					<item value="$Options2" if='len($Options) gt 2'/>
-					<item value="$Options3" if='len($Options) gt 3'/>
-				</sample>
-				<context/>
-			</context>
-		</input>
-	</context>
-	<output value="Вычислил: $StreetName"/>
-	<context id="get_order"/>
+		<output value="Это бот для заказа такси"/>
+		<context id="get_order" modal="true">
+			<pattern name="House" value="( $Number | $Number // $Number | $Number[а-я] | $Number к $Number )"/>
+			<pattern name="Street" value="entity://streets"/>
+			<pattern name="FromAddress" value="$Street [,] $House"/>
+			<pattern name="ToAddress" value="$Street [,] $House"/>
+			<!-->
+			<input>
+				<pattern value="* (заказ*|такси|машин*) * [ (от|к) $FromAddress] * [ (к|до) $ToAddress] * [$Date] * [$Time]"/>
+			<output value="От: $FromAddress, До: $ToAddress, Дата: $Date, $Time"/>
+			</input>
+			<!-->
+			<input pattern="$Street">
+				<var name="Input" value='get("name", $Street)' scope='user'/>
+				<var name="Options" value='get("options", $Street)' scope='user'/>
+				<var name="StreetName" value='get(0, $Options)' scope='user'/>	
+				<context id="ambiguation" if="len($Options) gt 1">
+					<output value="Уточните улицу:"/>
+					<var name="Options0" value='javascript: $Options[0]' scope='context'/>
+					<var name="Options1" value='javascript: $Options[1]' scope='context'/>
+					<var name="Options2" value='javascript: $Options[2]' scope='context'/>
+					<var name="Options3" value='javascript: $Options[3]' scope='context'/>
+					<input pattern="* $StreetName::Text"/>
+					<sample> 
+						<item value="$Options0"/>
+						<item value="$Options1"/>
+						<item value="$Options2" if='len($Options) gt 2'/>
+						<item value="$Options3" if='len($Options) gt 3'/>
+					</sample>
+					<context/>
+				</context>
+			</input>
+		</context>
+		<output value="Вычислил: $StreetName"/>
 	</input>
 </context>	
