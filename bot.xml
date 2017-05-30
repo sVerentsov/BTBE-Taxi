@@ -6,18 +6,9 @@
 			<pattern name="Street" value="entity://streets"/>
 			<pattern name="FromAddress" value="$Street [,] $House"/>
 			<pattern name="ToAddress" value="$Street [,] $House"/>
-			<!-->
 			<input>
 				<pattern value="* (заказ*|такси|машин*) * [ (от|к) $FromAddress] * [ (к|до) $ToAddress] * [$Date] * [$Time]"/>
 			<output value="От: $FromAddress, До: $ToAddress, Дата: $Date, $Time"/>
-			</input>
-			<!-->
-			<input pattern="$Street">
-				<var name="Input" value='get("name", $Street)'/>
-				<output value="$Input + $Street"/>
-			</input>
-			<input pattern="$Text">
-				<output value="Unknown"/>
 			</input>
 		</context>
 	</input>
