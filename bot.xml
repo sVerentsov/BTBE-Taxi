@@ -31,7 +31,7 @@
 					<input pattern="$Street">
 						<var name="Options" value='get("options", $Street)' scope='user'/>
 						<var name="StreetFinal" value='get(0, $Options)' scope='user'/>	
-						<output value="Неоднозначность разрешена: $Street"/>
+						<output value="Неоднозначность разрешена: $StreetFinal"/>
 						<context id="get_order"/>
 					</input>
 				</context>
