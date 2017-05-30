@@ -30,7 +30,7 @@
 						<item value="$Options3" if='len($Options) gt 3'/>
 					</sample>
 				</context>
-				<context id="order_formed"/>
+				
 			</input>
 		</context>
 		<context id="order_formed">
