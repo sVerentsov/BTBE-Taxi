@@ -1,7 +1,7 @@
 <context>
 	<input pattern="/start">
 	<output value="Это бот для заказа такси"/>
-		<context id="get_order">
+		<context id="get_order" modal="true">
 			<pattern name="House" value="( $Number | $Number // $Number | $Number[а-я] | $Number к $Number )"/>
 			<pattern name="Street" value="entity://streets"/>
 			<pattern name="FromAddress" value="$Street [,] $House"/>
@@ -19,11 +19,15 @@
 				<context id="ambiguation" if="len($Options) gt 1" modal="true">
 					<output value="Уточните улицу:"/>
 					<input pattern="* $StreetName::Text"/>
+					<var name="Options0" value='javascript: $Street[0]' scope='context'/>
+					<var name="Options1" value='javascript: $Street[1]' scope='context'/>
+					<var name="Options2" value='javascript: $Street[2]' scope='context'/>
+					<var name="Options3" value='javascript: $Street[3]' scope='context'/>
 					<sample> 
-						<item value="get(0, $Options)"/>
-						<item value="get(1, $Options)" />
-						<item value="get(2, $Options)" if='len($Options) gt 2'/>
-						<item value="get(3, $Options)" if='len($Options) gt 3'/>
+						<item value="$Options0">
+						<item value="$Options1"/>
+						<item value="$Options2"if='len($Options) gt 2'/>
+						<item value="$Options3"if='len($Options) gt 3'/>
 					</sample>
 				</context>
 				<output value="Вычислил: $StreetName"/>
