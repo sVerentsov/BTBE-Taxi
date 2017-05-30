@@ -1,3 +1,3 @@
-function ambig(options) {
-  return options.length > 1;
+function myget(i, options) {
+  return options[i];
 }
