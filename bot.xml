@@ -3,7 +3,7 @@
 	<output value="Это бот для заказа такси"/>
 		<context id="get_order">
 			<pattern name="House" value="( $Number | $Number // $Number | $Number[а-я] | $Number к $Number )"/>
-			<pattern name="Street" value="entity://street"/>
+			<pattern name="Street" value="entity://streets"/>
 			<pattern name="FromAddress" value="$Street [,] $House"/>
 			<pattern name="ToAddress" value="$Street [,] $House"/>
 			<!-->
