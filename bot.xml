@@ -1,7 +1,7 @@
 <context>
 	<input pattern="/start">
 	<output value="Это бот для заказа такси"/>
-		<context id="get_order">
+		<context id="get_order" modal="true">
 			<pattern name="House" value="( $Number | $Number // $Number | $Number[а-я] | $Number к $Number )"/>
 			<pattern name="Street" value="entity://streets"/>
 			<pattern name="FromAddress" value="$Street [,] $House"/>
@@ -13,9 +13,28 @@
 			</input>
 			<!-->
 			<input pattern="$Street">
-				<var name="Input" value='get("name", $Street)'/>
-				<var name="StreetName" value="get('options', $Street)[0]"/>
-				<output value="$Input + $StreetName"/>
+				<var name="Options" value='get("options", $Street)' scope='user'/>
+				<var name="StreetFinal" value='get(0, $Options)' scope='user'/>				
+				<output value="Однозначно: $StreetFinal" if="len($Options) lt 2"/>
+				<context id="ambiguation" if="len($Options) gt 1">
+					<output value="Уточните улицу:"/>
+					<var name="Options0" value='javascript: $Options[0]' scope='context'/>
+					<var name="Options1" value='javascript: $Options[1]' scope='context'/>
+					<var name="Options2" value='javascript: $Options[2]' scope='context'/>
+					<var name="Options3" value='javascript: $Options[3]' scope='context'/>
+					<sample> 
+						<item value="$Options0"/>
+						<item value="$Options1"/>
+						<item value="$Options2"/>
+						<item value="$Options3"/>
+					</sample>
+					<input pattern="$Street">
+						<var name="Options" value='get("options", $Street)' scope='user'/>
+						<var name="StreetFinal" value='get(0, $Options)' scope='user'/>	
+						<output value="Неоднозначность разрешена: $StreetFinal"/>
+						<context id="get_order"/>
+					</input>
+				</context>
 			</input>
 		</context>
 	</input>
