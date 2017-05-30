@@ -14,7 +14,7 @@
 			<!-->
 			<input pattern="$Street">
 				<var name="Input" value='get("name", $Street)'/>
-				<var name="StreetName" value="get('options', $Street)[0]"/>
+				<var name="StreetName" value='get("options", $Street)[0]'/>
 				<output value="$Input + $StreetName"/>
 			</input>
 		</context>
