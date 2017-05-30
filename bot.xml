@@ -6,11 +6,11 @@
 			<pattern name="Street" value="entity://streets"/>
 			<pattern name="FromAddress" value="$Street [,] $House"/>
 			<pattern name="ToAddress" value="$Street [,] $House"/>
-			<!-->
 			<input>
-				<pattern value="* (заказ*|такси|машин*) * [ (от|к) $FromAddress] * [ (к|до) $ToAddress] * [$Date] * [$Time]"/>
+				<pattern value="* (заказ*|такси|машин*) * [(от|к) $FromAddress] * [(к|до) $ToAddress] * [$Date] * [$Time]"/>
 			<output value="От: $FromAddress, До: $ToAddress, Дата: $Date, $Time"/>
 			</input>
+			
 			<!-->
 			<input pattern="$Street">
 				<var name="Options" value='get("options", $Street)' scope='user'/>
@@ -36,6 +36,7 @@
 					</input>
 				</context>
 			</input>
+			<!-->
 		</context>
 	</input>
 </context>	
