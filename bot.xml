@@ -16,6 +16,9 @@
 				<var name="Input" value='get("name", $Street)'/>
 				<output value="$Input + $Street"/>
 			</input>
+			<input pattern="$Text">
+				<output value="Unknown"/>
+			</input>
 		</context>
 	</input>
 </context>
