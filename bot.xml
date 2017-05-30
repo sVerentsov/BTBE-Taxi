@@ -16,8 +16,8 @@
 				<var name="Input" value='get("name", $Street)' scope='user'/>
 				<var name="Options" value='get("options", $Street)' scope='user'/>
 				<var name="StreetName" value='get(0, $Options)' scope='user'/>
+				<output value="Уточните улицу:" if="full(get(1, $Options)/>
 				<context id="ambiguation" if="full(get(1, $Options)) modal=true">
-					<output value="Уточните улицу:"/>
 					<input pattern="* $StreetName::Text"/>
 					<sample> 
 						<item value="get(0, $Options)"/>
@@ -25,8 +25,8 @@
 						<item value="get(2, $Options)"/>
 						<item value="get(3, $Options)"/>
 					</sample>
-					<output value="Вычислил: $StreetName"/>
 				</context>
+				<output value="Вычислил: $StreetName"/>
 			</input>
 		</context>
 	</input>
