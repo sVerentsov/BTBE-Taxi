@@ -35,6 +35,7 @@
 		</context>
 		<context id="order_formed">
 			<output value="Вычислил: $StreetName" if="len($Options) lt 2"/>
+			<context id="get_order"/>
 		</context>
 	</input>
 </context>	
