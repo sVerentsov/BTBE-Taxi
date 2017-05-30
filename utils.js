@@ -1,3 +1,3 @@
-function len(options) {
+function ambig(options) {
   return options.length > 1;
 }
