@@ -20,25 +20,25 @@
 					<input>
 						<pattern value=" * [$FromStreet::Street [,] [(дом|д|д.)] $HouseOut::House *]" />
 						<context id="getFromAdress" if="empty($FromStreet)"/>
-						<var name="Options" value='get("options", $FromStreet)' scope='user'/>
-						<var name="StreetFullFrom" value='get(0, $Options)' scope='user'/>	
-						<context id="ambiguationFrom" if="len($Options) gt 1"/>	
+						<var name="OptionsFrom" value='get("options", $FromStreet)' scope='user'/>	
+						<context id="ambiguationFrom" if="len($OptionsFrom) gt 1"/>	
+						<var name="StreetFullFrom" value='get(0, $OptionsFrom)' scope='user'/>
 						<context id="getToAdress" if="empty($ToStreet)"/>
-						<var name="Options" value='get("options", $ToStreet)' scope='user'/>
-						<context id="ambiguationTo" if="len($Options) gt 1"/>
-						<var name="StreetFullTo" value='get(0, $Options)' scope='user'/>						
+						<var name="OptionsTo" value='get("options", $ToStreet)' scope='user'/>
+						<context id="ambiguationTo" if="len($OptionsTo) gt 1"/>
+						<var name="StreetFullTo" value='get(0, $OptionsTo)' scope='user'/>						
 						<context id="order_formed"/>	
 					</input>
 				</context>		
 				
-				<var name="Options" value='get("options", $FromStreet)' scope='user'/>
+				<var name="OptionsFrom" value='get("options", $FromStreet)' scope='user'/>
 				
-				<context id="ambiguationFrom" if="len($Options) gt 1">
+				<context id="ambiguationFrom" if="len($OptionsFrom) gt 1">
 					<output value="Уточните улицу, от которой поедете:"/>
-					<var name="Options0" value='javascript: $Options[0]' scope='context'/>
-					<var name="Options1" value='javascript: $Options[1]' scope='context'/>
-					<var name="Options2" value='javascript: $Options[2]' scope='context'/>
-					<var name="Options3" value='javascript: $Options[3]' scope='context'/>
+					<var name="Options0" value='javascript: $OptionsFrom[0]' scope='context'/>
+					<var name="Options1" value='javascript: $OptionsFrom[1]' scope='context'/>
+					<var name="Options2" value='javascript: $OptionsFrom[2]' scope='context'/>
+					<var name="Options3" value='javascript: $OptionsFrom[3]' scope='context'/>
 					<sample> 
 						<item value="$Options0"/>
 						<item value="$Options1"/>
@@ -46,38 +46,38 @@
 						<item value="$Options3"/>
 					</sample>
 					<input pattern="$Street">
-						<var name="Options" value='get("options", $Street)' scope='user'/>
-						<var name="StreetFullFrom" value='get(0, $Options)' scope='user'/>	
+						<var name="OptionsFrom" value='get("options", $Street)' scope='user'/>
+						<var name="StreetFullFrom" value='get(0, $OptionsFrom)' scope='user'/>	
 						<context id="getToAdress" if="empty($ToStreet)"/>
-						<var name="Options" value='get("options", $ToStreet)' scope='user'/>
-						<context id="ambiguationTo" if="len($Options) gt 1"/>
-						<var name="StreetFullTo" value='get(0, $Options)' scope='user'/>												
+						<var name="OptionsTo" value='get("options", $ToStreet)' scope='user'/>
+						<context id="ambiguationTo" if="len($OptionsTo) gt 1"/>
+						<var name="StreetFullTo" value='get(0, $OptionsTo)' scope='user'/>												
 						<context id="order_formed"/>
 					</input>
 				</context>
 				
-				<var name="StreetFullFrom" value='get(0, $Options)' scope='user'/>
+				<var name="StreetFullFrom" value='get(0, $OptionsFrom)' scope='user'/>
 				
 				<context id="getToAdress" if="empty($ToStreet)">
 					<output value="Укажите адрес пункта назначения:"/>
 					<input>
 						<pattern value="* [$ToStreet::Street [,] [(дом|д|д.)] $HouseTo::House *]" />
 						<context id="getToAdress" if="empty($ToStreet)"/>
-						<var name="Options" value='get("options", $ToStreet)' scope='user'/>
-						<var name="StreetFullTo" value='get(0, $Options)' scope='user'/>	
-						<context id="ambiguationTo" if="len($Options) gt 1"/>		
+						<var name="OptionsTo" value='get("options", $ToStreet)' scope='user'/>
+						<var name="StreetFullTo" value='get(0, $OptionsTo)' scope='user'/>	
+						<context id="ambiguationTo" if="len($OptionsTo) gt 1"/>		
 						<context id="order_formed"/>	
 					</input>
 				</context>	
 
-				<var name="Options" value='get("options", $ToStreet)' scope='user'/>
+				<var name="OptionsTo" value='get("options", $ToStreet)' scope='user'/>
 				
-				<context id="ambiguationTo" if="len($Options) gt 1">
+				<context id="ambiguationTo" if="len($OptionsTo) gt 1">
 					<output value="Уточните улицу, куда поедете:"/>
-					<var name="Options0" value='javascript: $Options[0]' scope='context'/>
-					<var name="Options1" value='javascript: $Options[1]' scope='context'/>
-					<var name="Options2" value='javascript: $Options[2]' scope='context'/>
-					<var name="Options3" value='javascript: $Options[3]' scope='context'/>
+					<var name="Options0" value='javascript: $OptionsTo[0]' scope='context'/>
+					<var name="Options1" value='javascript: $OptionsTo[1]' scope='context'/>
+					<var name="Options2" value='javascript: $OptionsTo[2]' scope='context'/>
+					<var name="Options3" value='javascript: $OptionsTo[3]' scope='context'/>
 					<sample> 
 						<item value="$Options0"/>
 						<item value="$Options1"/>
@@ -85,13 +85,13 @@
 						<item value="$Options3"/>
 					</sample>
 					<input pattern="$Street">
-						<var name="Options" value='get("options", $Street)' scope='user'/>
-						<var name="StreetFullTo" value='get(0, $Options)' scope='user'/>	
+						<var name="OptionsTo" value='get("options", $Street)' scope='user'/>
+						<var name="StreetFullTo" value='get(0, $OptionsTo)' scope='user'/>	
 						<context id="order_formed"/>
 					</input>
 				</context>
 				
-				<var name="StreetFullTo" value='get(0, $Options)' scope='user'/>
+				<var name="StreetFullTo" value='get(0, $OptionsTo)' scope='user'/>
 				
 				<context id="order_formed"/>
 			</input>
