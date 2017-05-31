@@ -21,7 +21,8 @@
 						<context id="getFromAdress" if="empty($FromStreet)"/>
 						<var name="Options" value='get("options", $FromStreet)' scope='user'/>
 						<var name="StreetFullFrom" value='get(0, $Options)' scope='user'/>	
-						<context id="ambiguationFrom" if="len($Options) gt 1"/>				
+						<context id="ambiguationFrom" if="len($Options) gt 1"/>		
+						<context id="order_formed"/>	
 					</input>
 				</context>		
 				<context id="ambiguationFrom" if="len($Options) gt 1">
