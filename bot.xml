@@ -4,18 +4,18 @@
 		<context id="get_order" modal="true">
 			<pattern name="House" value="$Number [(/ $Number | $Text | (к|корпус) $Number )]"/>
 			<pattern name="Street" value="entity://streets"/>
-			<pattern name="FromAddress" value="$FromStreet::Street [,] $House"/>
-			<pattern name="ToAddress" value="$ToStreet::Street [,] $House"/>
+			<pattern name="FromAddress" value="$FromStreet::Street [,] [дом] $House"/>
+			<pattern name="ToAddress" value="$ToStreet::Street [,] [дом] $House"/>
 			<input>
 				<!--><pattern value="*(заказ*|такси|машин*)*[(от|к) $FromAddress]*[(к|до) $ToAddress]*[$Date]*[$Time]"/>
 				<output value="От: $FromAddress, До: $ToAddress, Дата: $Date, $Time"/>
 				<!--> 
-				<pattern value="$FromStreet::Street [,] $House"/>
+				<pattern value="(от|к) $FromStreet::Street [,] $House"/>
 				<var name="Options" value='get("options", $FromStreet)' scope='context'/>
 				<var name="StreetFullFrom" value='get(0, $Options)' scope='user'/>				
-				<output value="Однозначно: StreetFullFrom" if="len($Options) lt 2"/>
-				<context id="ambiguation" if="len($Options) gt 1">
-					<output value="Уточните улицу:"/>
+				<output value="Однозначно: $StreetFullFrom" if="len($Options) lt 2"/>
+				<context id="ambiguationOut" if="len($Options) gt 1">
+					<output value="Уточните улицу, от которой поедете:"/>
 					<var name="Options0" value='javascript: $Options[0]' scope='context'/>
 					<var name="Options1" value='javascript: $Options[1]' scope='context'/>
 					<var name="Options2" value='javascript: $Options[2]' scope='context'/>
