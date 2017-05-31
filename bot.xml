@@ -54,6 +54,9 @@
 						<var name="StreetFullTo" value='get(0, $OptionsTo)' scope='user'/>												
 						<context id="order_formed"/>
 					</input>
+					<input pattern="$Text">
+						<context id="getToAdress"/>
+					</input> 
 				</context>
 				
 				<var name="StreetFullFrom" value='get(0, $OptionsFrom)' scope='user'/>
@@ -89,6 +92,9 @@
 						<var name="StreetFullTo" value='get(0, $OptionsTo)' scope='user'/>	
 						<context id="order_formed"/>
 					</input>
+					<input pattern="$Text">
+						<context id="getToAdress"/>
+					</input> 
 				</context>
 				
 				<var name="StreetFullTo" value='get(0, $OptionsTo)' scope='user'/>
