@@ -18,7 +18,7 @@
 				<context id="getFromAdress" if="empty($FromStreet)">
 					<output value="Укажите адрес отправления:"/>
 					<input>
-						<pattern value=" * [(от|к) * $FromStreet::Street [,] [(дом|д|д.)] $HouseOut::House *]" />
+						<pattern value=" * [$FromStreet::Street [,] [(дом|д|д.)] $HouseOut::House *]" />
 						<context id="getFromAdress" if="empty($FromStreet)"/>
 						<var name="Options" value='get("options", $FromStreet)' scope='user'/>
 						<var name="StreetFullFrom" value='get(0, $Options)' scope='user'/>	
@@ -61,7 +61,7 @@
 				<context id="getToAdress" if="empty($ToStreet)">
 					<output value="Укажите адрес пункта назначения:"/>
 					<input>
-						<pattern value="* [(до|к) * $ToStreet::Street [,] [(дом|д|д.)] $HouseTo::House *]" />
+						<pattern value="* [$ToStreet::Street [,] [(дом|д|д.)] $HouseTo::House *]" />
 						<context id="getToAdress" if="empty($ToStreet)"/>
 						<var name="Options" value='get("options", $ToStreet)' scope='user'/>
 						<var name="StreetToFrom" value='get(0, $Options)' scope='user'/>	
