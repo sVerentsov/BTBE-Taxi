@@ -64,7 +64,7 @@
 						<pattern value="* [$ToStreet::Street [,] [(дом|д|д.)] $HouseTo::House *]" />
 						<context id="getToAdress" if="empty($ToStreet)"/>
 						<var name="Options" value='get("options", $ToStreet)' scope='user'/>
-						<var name="StreetToFrom" value='get(0, $Options)' scope='user'/>	
+						<var name="StreetFullTo" value='get(0, $Options)' scope='user'/>	
 						<context id="ambiguationTo" if="len($Options) gt 1"/>		
 						<context id="order_formed"/>	
 					</input>
