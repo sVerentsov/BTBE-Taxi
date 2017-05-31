@@ -46,7 +46,7 @@
 						<item value="$Options3"/>
 					</sample>
 					<input pattern="$Street">
-						<var name="Options" value='get("options", $Street)' scope='context'/>
+						<var name="Options" value='get("options", $Street)' scope='user'/>
 						<var name="StreetFullFrom" value='get(0, $Options)' scope='user'/>	
 						<context id="getToAdress" if="empty($ToStreet)"/>
 						<var name="Options" value='get("options", $ToStreet)' scope='user'/>
@@ -85,7 +85,7 @@
 						<item value="$Options3"/>
 					</sample>
 					<input pattern="$Street">
-						<var name="Options" value='get("options", $Street)' scope='context'/>
+						<var name="Options" value='get("options", $Street)' scope='user'/>
 						<var name="StreetFullTo" value='get(0, $Options)' scope='user'/>	
 						<context id="order_formed"/>
 					</input>
