@@ -9,7 +9,7 @@
 			<input>
 				<!--><pattern value="*(заказ*|такси|машин*)*[(от|к) $FromAddress]*[(к|до) $ToAddress]*[$Date]*[$Time]"/>
 				<output value="От: $FromAddress, До: $ToAddress, Дата: $Date, $Time"/>
-				<!--> <pattern value="$FromAddress"/>
+				<!--> <pattern value="$FromStreet::Street [,] $House"/>
 				<var name="Options" value='get("options", $FromStreet)' scope='user'/>
 				<var name="StreetFinal" value='get(0, $Options)' scope='user'/>				
 				<output value="Однозначно: $StreetFinal" if="len($Options) lt 2"/>
