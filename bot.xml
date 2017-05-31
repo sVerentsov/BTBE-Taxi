@@ -10,6 +10,7 @@
 				<!--><pattern value="*(заказ*|такси|машин*)*[(от|к) $FromAddress]*[(к|до) $ToAddress]*[$Date]*[$Time]"/>
 				<output value="От: $FromAddress, До: $ToAddress, Дата: $Date, $Time"/>
 				<!--> <pattern value="$FromAddress"/>
+				<output value="FromStreet/>
 				<context id="get_order"/> 
 			</input>
 			<!-->
