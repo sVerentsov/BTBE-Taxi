@@ -33,7 +33,7 @@
 						<context id="order_formed"/>
 					</input>
 				</context>
-				<context id="order_formed"/> 
+				<!--><context id="order_formed"/> <!-->
 			</input>
 			<!-->
 			<input pattern="$Street">
@@ -43,7 +43,7 @@
 		
 		<context id='order_formed'>
 			<output value='order formed: $StreetFullFrom, $HouseOut'/>
-			<context id='get_order'/>
+			<!--><context id='get_order'/> <!-->
 		</context>
 	</input>
 </context>	
