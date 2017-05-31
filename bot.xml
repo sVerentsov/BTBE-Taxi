@@ -10,8 +10,8 @@
 				<!--><pattern value="*(заказ*|такси|машин*)*[(от|к) $FromAddress]*[(к|до) $ToAddress]*[$Date]*[$Time]"/>
 				<output value="От: $FromAddress, До: $ToAddress, Дата: $Date, $Time"/>
 				<!--> <pattern value="$FromStreet::Street [,] $House"/>
-				<var name="Options" value='get("options", $FromStreet)' scope='user'/>
-				<var name="StreetFinal" value='get(0, $Options)' scope='user'/>				
+				<var name="Options" value='get("options", $FromStreet)' scope='context'/>
+				<var name="StreetFinal" value='get(0, $Options)' scope='context'/>				
 				<output value="Однозначно: $StreetFinal" if="len($Options) lt 2"/>
 				<context id="ambiguation" if="len($Options) gt 1">
 					<output value="Уточните улицу:"/>
@@ -26,8 +26,8 @@
 						<item value="$Options3"/>
 					</sample>
 					<input pattern="$Street">
-						<var name="Options" value='get("options", $Street)' scope='user'/>
-						<var name="StreetFinal" value='get(0, $Options)' scope='user'/>	
+						<var name="Options" value='get("options", $Street)' scope='context'/>
+						<var name="StreetFinal" value='get(0, $Options)' scope='context'/>	
 						<output value="Неоднозначность разрешена: $StreetFinal"/>
 						<context id="get_order"/>
 					</input>
