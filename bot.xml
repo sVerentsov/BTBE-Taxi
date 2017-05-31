@@ -98,7 +98,7 @@
 		</context>
 		
 		<context id='order_formed'>
-			<output value='order formed: $StreetFullFrom, $HouseOut'/>
+			<output value='Машина заказана от $StreetFullFrom, $HouseOut до $StreetFullTo, $HouseTo'/>
 			<sample> 
 				<item value="Заказать ещё одну машину"/>
 			</sample>
