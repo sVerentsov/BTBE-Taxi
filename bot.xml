@@ -10,7 +10,7 @@
 				<!--><pattern value="*(заказ*|такси|машин*)*[(от|к) $FromAddress]*[(к|до) $ToAddress]*[$Date]*[$Time]"/>
 				<output value="От: $FromAddress, До: $ToAddress, Дата: $Date, $Time"/>
 				<!--> 
-				<pattern value=" *(заказ*|такси|машин*)* х(от|к) * $FromStreet::Street [,] [дом] $HouseOut::House"/>
+				<pattern value=" *(заказ*|такси|машин*)* (от|к) * $FromStreet::Street [,] [дом] $HouseOut::House"/>
 				<var name="Options" value='get("options", $FromStreet)' scope='context'/>
 				<var name="StreetFullFrom" value='get(0, $Options)' scope='user'/>				
 				<output value="Однозначно: $StreetFullFrom" if="len($Options) lt 2"/>
@@ -30,10 +30,10 @@
 						<var name="Options" value='get("options", $Street)' scope='context'/>
 						<var name="StreetFullFrom" value='get(0, $Options)' scope='user'/>	
 						<output value="Неоднозначность разрешена: $StreetFullFrom"/>
-						<context id="get_order"/>
+						<context id="order_formed"/>
 					</input>
 				</context>
-				<context id="get_order"/> 
+				<context id="order_formed"/> 
 			</input>
 			<!-->
 			<input pattern="$Street">
@@ -42,7 +42,8 @@
 		</context>
 		
 		<context id='order_formed'>
-			<output value='order formed'/>
+			<output value='order formed: $StreetFullFrom, $HouseOut'/>
+			<context id='get_order'/>
 		</context>
 	</input>
 </context>	
