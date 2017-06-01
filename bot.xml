@@ -102,12 +102,16 @@
 				<var name="StreetFullTo" value='get(0, $OptionsTo)' scope='user'/>
 				
 				<context id="getTime" if="empty($Time)">
+					<output value="Когда?"/>
 					<sample> 
-						<item value="Сейчас"/>
+						<item value="Через 5 минут"/>
 					</sample>
 					<input pattern="$Time">
 						<context id="order_formed"/>
 					</input>
+					<input pattern="$Text">
+						<context id="getTime"/>
+					</input> 
 				</context>
 				
 				
