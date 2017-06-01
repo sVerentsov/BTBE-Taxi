@@ -1,15 +1,14 @@
 <context>
 	<input pattern="/start">
 		<context id="get_order">
-			<output value="Здесь можно заказать такси. Можете сразу оформить заказ, написав, например, 'от актюбинской дом 3 к Героев 5в через 20 мин' или следуйте инструкциям на кнопках. 
-			/start отменяет оформление заказа."/>
+			<output value="Здесь можно заказать такси. Можете сразу оформить заказ, написав, например, 'от актюбинской дом 3 к Героев 5в через 20 мин' или следуйте инструкциям на кнопках. Если что, /start отменяет оформление заказа."/>
 			<pattern name="House" value="$Number [(/ $Number | (а|б|в|г|д|е) | (к|корпус) $Number )]"/>
 			<pattern name="Street" value="entity://streets"/>
 			<sample> 
 				<item value="Указать адрес отправления"/>
 			</sample>	
 			<input>
-				<pattern value=" * [от * $FromStreet::Street [,] [(дом|д|д.)] $HouseOut::House *] [(до|к) * $ToStreet::Street [,] [(дом|д|д.)] $HouseTo::House *] [$Time *]" />
+				<pattern value=" * [[от] * $FromStreet::Street [,] [(дом|д|д.)] $HouseOut::House *] [(до|к) * $ToStreet::Street [,] [(дом|д|д.)] $HouseTo::House *] [$Time *]" />
 				
 				<context id="getFromAdress" if="empty($FromStreet)">
 					<output value="Укажите адрес отправления:"/>
