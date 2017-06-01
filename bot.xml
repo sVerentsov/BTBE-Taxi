@@ -116,7 +116,8 @@
 		</context>
 		
 		<context id='order_formed'>
-			<output value='Машина заказана от $StreetFullFrom, $HouseOut до $StreetFullTo, $HouseTo в $Time'/>
+			<var name="$FormattedTime" value="get('formatted', $Time)"/>
+			<output value='Машина заказана от $StreetFullFrom, $HouseOut до $StreetFullTo, $HouseTo в $FormattedTime'/>
 			<sample> 
 				<item value="Заказать ещё одну машину"/>
 			</sample>
