@@ -1,12 +1,12 @@
 <context>
 	<input pattern="/start">
 		<context id="get_order">
-			<output value="Это бот для заказа такси. Можете сразу оформить заказ, написав, например 'от Актюбинской 3 к Ленина 5в через 20 минут' или следуйте инструкциям на кнопках"/>
+			<output value="Это бот для заказа такси. Можете сразу оформить заказ, написав, например 'от актюбинской 3 к Героев 5в через 20 мин' или следуйте инструкциям на кнопках"/>
 			<pattern name="House" value="$Number [(/ $Number | (а|б|в|г|д|е) | (к|корпус) $Number )]"/>
 			<pattern name="Street" value="entity://streets"/>
 			<sample> 
 				<item value="Указать адрес отправления"/>
-			</sample>
+			</sample>	
 			<input>
 				<pattern value=" * [от * $FromStreet::Street [,] [(дом|д|д.)] $HouseOut::House *] [(до|к) * $ToStreet::Street [,] [(дом|д|д.)] $HouseTo::House *] [$Time *]" />
 				
