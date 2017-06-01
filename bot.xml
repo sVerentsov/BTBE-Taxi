@@ -4,10 +4,8 @@
 			<output value="Это бот для заказа такси"/>
 			<pattern name="House" value="$Number [(/ $Number | (а|б|в|г|д|е) | (к|корпус) $Number )]"/>
 			<pattern name="Street" value="entity://streets"/>
-			<pattern name="FromAddress" value="$FromStreet::Street [,] [дом] $House"/>
-			<pattern name="ToAddress" value="$ToStreet::Street [,] [дом] $House"/>
 			<sample> 
-				<item value="Заказать машину к Усилова, дом 3"/>
+				<item value="Заказать машину к Усилова, дом 3 до Макарова 6б"/>
 			</sample>
 			<input>
 				<!--><pattern value="*(заказ*|такси|машин*)*[(от|к) $FromAddress]*[(к|до) $ToAddress]*[$Date]*[$Time]"/>
@@ -107,6 +105,14 @@
 			<output value='Машина заказана от $StreetFullFrom, $HouseOut до $StreetFullTo, $HouseTo'/>
 			<sample> 
 				<item value="Заказать ещё одну машину"/>
+				<var name="dummy">
+					<script>
+						<![CDATA[
+							$ToStreet = null;
+							1;
+						]]>
+					</script>
+				</var>
 			</sample>
 			<input pattern="$Text">
 				<context id='get_order'/>
