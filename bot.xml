@@ -1,7 +1,7 @@
 <context>
 	<input pattern="/start">
 		<context id="get_order">
-			<output value="Здесь можно заказать такси. Можете сразу оформить заказ, написав, например 'от актюбинской дом 3 к Героев 5в через 20 мин' или следуйте инструкциям на кнопках"/>
+			<output value="Здесь можно заказать такси. Можете сразу оформить заказ, написав, например, 'от актюбинской дом 3 к Героев 5в через 20 мин' или следуйте инструкциям на кнопках"/>
 			<pattern name="House" value="$Number [(/ $Number | (а|б|в|г|д|е) | (к|корпус) $Number )]"/>
 			<pattern name="Street" value="entity://streets"/>
 			<sample> 
@@ -116,7 +116,6 @@
 		</context>
 		
 		<context id='order_formed'>
-			<var name="FormattedTime" value='get("formatted", $Time)'/>
 			<output value='Машина заказана от $StreetFullFrom, $HouseOut до $StreetFullTo, $HouseTo в $Time'/>
 			<sample> 
 				<item value="Заказать ещё одну машину"/>
