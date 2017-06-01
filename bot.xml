@@ -11,7 +11,7 @@
 				<!--><pattern value="*(заказ*|такси|машин*)*[(от|к) $FromAddress]*[(к|до) $ToAddress]*[$Date]*[$Time]"/>
 				<output value="От: $FromAddress, До: $ToAddress, Дата: $Date, $Time"/>
 				<!--> 
-				<pattern value=" * [(от|к) * $FromStreet::Street [,] [(дом|д|д.)] $HouseOut::House *] [(до|к) * $ToStreet::Street [,] [(дом|д|д.)] $HouseTo::House *]" />
+				<pattern value=" * [(от|к) * $FromStreet::Street [,] [(дом|д|д.)] $HouseOut::House *] [(до|к) * $ToStreet::Street [,] [(дом|д|д.)] $HouseTo::House *] [$Time *]" />
 				
 				<context id="getFromAdress" if="empty($FromStreet)">
 					<output value="Укажите адрес отправления:"/>
@@ -24,7 +24,8 @@
 						<context id="getToAdress" if="empty($ToStreet)"/>
 						<var name="OptionsTo" value='get("options", $ToStreet)' scope='user'/>
 						<context id="ambiguationTo" if="len($OptionsTo) gt 1"/>
-						<var name="StreetFullTo" value='get(0, $OptionsTo)' scope='user'/>						
+						<var name="StreetFullTo" value='get(0, $OptionsTo)' scope='user'/>	
+						<context id="getTime" if="empty($Time)" />
 						<context id="order_formed"/>	
 					</input>
 				</context>		
@@ -49,11 +50,12 @@
 						<context id="getToAdress" if="empty($ToStreet)"/>
 						<var name="OptionsTo" value='get("options", $ToStreet)' scope='user'/>
 						<context id="ambiguationTo" if="len($OptionsTo) gt 1"/>
-						<var name="StreetFullTo" value='get(0, $OptionsTo)' scope='user'/>												
+						<var name="StreetFullTo" value='get(0, $OptionsTo)' scope='user'/>
+						<context id="getTime" if="empty($Time)" />						
 						<context id="order_formed"/>
 					</input>
 					<input pattern="$Text">
-						<context id="getToAdress"/>
+						<context id="getFromAdress"/>
 					</input> 
 				</context>
 				
@@ -67,6 +69,7 @@
 						<var name="OptionsTo" value='get("options", $ToStreet)' scope='user'/>
 						<var name="StreetFullTo" value='get(0, $OptionsTo)' scope='user'/>	
 						<context id="ambiguationTo" if="len($OptionsTo) gt 1"/>		
+						<context id="getTime" if="empty($Time)" />
 						<context id="order_formed"/>	
 					</input>
 				</context>	
@@ -87,7 +90,8 @@
 					</sample>
 					<input pattern="$Street">
 						<var name="OptionsTo" value='get("options", $Street)' scope='user'/>
-						<var name="StreetFullTo" value='get(0, $OptionsTo)' scope='user'/>	
+						<var name="StreetFullTo" value='get(0, $OptionsTo)' scope='user'/>
+						<context id="getTime" if="empty($Time)" />
 						<context id="order_formed"/>
 					</input>
 					<input pattern="$Text">
@@ -97,22 +101,21 @@
 				
 				<var name="StreetFullTo" value='get(0, $OptionsTo)' scope='user'/>
 				
+				<context id="getTime" if="empty($Time)">
+					<sample> 
+						<item value="Сейчас"/>
+					</sample>
+					<input pattern="$Time"/>
+				</context>
+				
 				<context id="order_formed"/>
 			</input>
 		</context>
 		
 		<context id='order_formed'>
-			<output value='Машина заказана от $StreetFullFrom, $HouseOut до $StreetFullTo, $HouseTo'/>
+			<output value='Машина заказана от $StreetFullFrom, $HouseOut до $StreetFullTo, $HouseTo в $Time'/>
 			<sample> 
 				<item value="Заказать ещё одну машину"/>
-				<var name="dummy">
-					<script>
-						<![CDATA[
-							$ToStreet = null;
-							1;
-						]]>
-					</script>
-				</var>
 			</sample>
 			<input pattern="$Text">
 				<context id='get_order'/>
