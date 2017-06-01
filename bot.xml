@@ -105,10 +105,12 @@
 					<sample> 
 						<item value="Сейчас"/>
 					</sample>
-					<input pattern="$Time"/>
+					<input pattern="$Time">
+						<context id="order_formed"/>
+					</input>
 				</context>
 				
-				<context id="order_formed"/>
+				
 			</input>
 		</context>
 		
