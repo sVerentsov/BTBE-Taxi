@@ -1,5 +1,5 @@
 <context>
-	<input pattern="$Text">
+	<input pattern="/start">
 		<context id="get_order">
 			<output value="Это бот для заказа такси"/>
 			<pattern name="House" value="$Number [(/ $Number | (а|б|в|г|д|е) | (к|корпус) $Number )]"/>
